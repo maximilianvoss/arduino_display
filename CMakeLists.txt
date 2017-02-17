@@ -5,14 +5,12 @@ project(${PROJECT_NAME})
 
 #set(CMAKE_VERBOSE_MAKEFILE on)
 
-set(${CMAKE_PROJECT_NAME}_SRCS display.c)
+set(${CMAKE_PROJECT_NAME}_SRCS display.c StreamBridge.cpp)
+set(${CMAKE_PROJECT_NAME}_HDRS display.h StreamBridge.hpp)
 
 set(${CMAKE_PROJECT_NAME}_BOARD yun)
 set(${CMAKE_PROJECT_NAME}_PORT /dev/cu.usbmodem1421)
 set(${CMAKE_PROJECT_NAME}_PROGRAMMER avrispmkii)
-#set(${CMAKE_PROJECT_NAME}_LIBS display)
-set(ARDLIBS Bridge)
-
-#print_board_list()
+set(ARDLIBS Bridge) 
 
 generate_arduino_library(${CMAKE_PROJECT_NAME})
