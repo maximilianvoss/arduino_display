@@ -1,4 +1,4 @@
-[submodule "arduino-cmake"]
-    path = cmake
-    url = git@github.com:maximilianvoss/arduino-cmake.git
-    branch = develop
+[submodule "cmake"]
+	path = cmake
+	url = git@github.com:maximilianvoss/arduino-cmake.git
+	branch = develop
