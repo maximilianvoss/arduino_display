@@ -28,7 +28,8 @@ void StreamBridgeClass::begin() {
 		stream.print(F("\n"));
 		delay(500);
 		
-		stream.print("/tmp/cstreammultiplexer server /dev/console\n");
+		stream.print(STREAMMULTIPLEXER);
+		stream.print("\n");
 		delay(500);
 		
 		if ( stream.available() > 0 ) {
@@ -62,10 +63,17 @@ int StreamBridgeClass::read(void *data, size_t length) {
 }
 
 void StreamBridgeClass::write(void *data, size_t length) {
+	char boundaries = 0xFF;
 	if ( stream.available() > 0 ) {
 		dropAll();
 	}
+	stream.write(&boundaries, 1);
+	stream.write(&boundaries, 1);
+	stream.write((char *) &length, sizeof(size_t));
+	stream.write(&boundaries, 1);
 	stream.write((char *) data, length);
+	stream.write(&boundaries, 1);
+	stream.write(&boundaries, 1);
 }
 
 void StreamBridgeClass::dropAll() {

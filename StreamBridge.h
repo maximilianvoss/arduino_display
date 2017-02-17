@@ -9,6 +9,10 @@
 #include <HardwareSerial.h>
 #include <Stream.h>
 
+#ifndef STREAMMULTIPLEXER
+#define STREAMMULTIPLEXER "/tmp/cstreammultiplexer server /dev/console"
+#endif
+
 class StreamBridgeClass {
 public:
 	StreamBridgeClass(Stream &_stream);
