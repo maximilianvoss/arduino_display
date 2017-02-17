@@ -10,7 +10,7 @@
 #include <Stream.h>
 
 #ifndef STREAMMULTIPLEXER
-#define STREAMMULTIPLEXER "/tmp/cstreammultiplexer server /dev/console"
+#define STREAMMULTIPLEXER "/usr/bin/multiserver"
 #endif
 
 class StreamBridgeClass {
