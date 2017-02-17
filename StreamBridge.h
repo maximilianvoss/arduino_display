@@ -1,5 +1,5 @@
-#ifndef ARDUINO_STREAMBRIDGE_H
-#define ARDUINO_STREAMBRIDGE_H
+#ifndef ARDUINO_DISPLAY_STREAMBRIDGE_H
+#define ARDUINO_DISPLAY_STREAMBRIDGE_H
 
 #ifndef BRIDGE_BAUDRATE
 #define BRIDGE_BAUDRATE 250000
@@ -25,11 +25,9 @@ private:
 	bool started;
 };
 
-// This subclass uses a serial port Stream
 class SerialStreamBridgeClass : public StreamBridgeClass {
 public:
 	SerialStreamBridgeClass(HardwareSerial &_serial) : StreamBridgeClass(_serial), serial(_serial) {
-		// Empty
 	}
 
 	void begin(unsigned long baudrate = BRIDGE_BAUDRATE) {

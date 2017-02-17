@@ -1,4 +1,5 @@
-#include "StreamBridge.hpp"
+#include "StreamBridge.h"
+
 
 StreamBridgeClass::StreamBridgeClass(Stream &_stream) : stream(_stream), started(false) {
 }
@@ -73,15 +74,13 @@ void StreamBridgeClass::dropAll() {
 	}
 }
 
-// Bridge instance
 #if defined(SERIAL_PORT_LINUXBRIDGE)
 SerialStreamBridgeClass StreamBridge(SERIAL_PORT_LINUXBRIDGE);
 #elif defined(SERIAL_PORT_HARDWARE)
 SerialStreamBridgeClass StreamBridge(SERIAL_PORT_HARDWARE);
 #elif defined(SERIAL_PORT_HARDWARE_OPEN)
 SerialStreamBridgeClass StreamBridge(SERIAL_PORT_HARDWARE_OPEN);
-#elif defined(__AVR_ATmega32U4__) // Legacy fallback
-// Leonardo variants (where HardwareSerial is Serial1)
+#elif defined(__AVR_ATmega32U4__) 
 SerialStreamBridgeClass StreamBridge(Serial1);
 #else
 SerialStreamBridgeClass StreamBridge(Serial);

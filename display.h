@@ -1,10 +1,10 @@
-#ifndef ARDUINO_DISPLAY_H
-#define ARDUINO_DISPLAY_H
+#ifndef ARDUINO_DISPLAY_DISPLAY_H
+#define ARDUINO_DISPLAY_DISPLAY_H
 
-#include <avr/io.h>
+#include <Arduino.h>
 
-#define DISPLAY_X 8
-#define DISPLAY_Y 8
+#define DISPLAY_HEIGHT 8
+#define DISPLAY_WIDTH 8
 
 #define LATCHPIN 3
 
@@ -19,11 +19,18 @@ extern "C" {
 #endif
 
 typedef struct {
-	uint8_t volatile data[DISPLAY_X][DISPLAY_Y];
+	uint8_t volatile data[DISPLAY_HEIGHT][DISPLAY_WIDTH];
 } display_t;
+
+typedef struct {
+	bool r;
+	bool g;
+	bool b;
+} color_t;
 
 void display_initDisplay(display_t *display);
 void display_render(display_t *display);
+void display_updateColor(display_t *display, uint8_t x, uint8_t y, color_t *color);
 
 #ifdef __cplusplus
 }
