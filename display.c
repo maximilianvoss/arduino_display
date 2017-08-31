@@ -1,7 +1,7 @@
 #include <string.h>
+#include <logging.h>
 #include "display.h"
 #include "streamwrapper.h"
-
 
 void display_initDisplay(display_t *display) {
 	memset(display, '\0', sizeof(display_t));
